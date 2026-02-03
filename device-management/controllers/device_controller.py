@@ -415,7 +415,7 @@ def deploy_device(
     if not device:
         raise HTTPException(
             status_code=400, 
-            detail="Device cannot be deployed. It must be in 'in_stock' or 'reserved' status."
+            detail="Device cannot be deployed. It must be in 'in_stock', 'reserved', or 'maintenance' status."
         )
     
     # Log the action

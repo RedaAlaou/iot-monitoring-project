@@ -239,7 +239,9 @@ class DeviceDAO:
         if not device:
             return None
         
-        if device.status != DeviceStatus.IN_STOCK and device.status != DeviceStatus.RESERVED:
+        # Allow deployment from in_stock, reserved, or maintenance status
+        allowed_statuses = [DeviceStatus.IN_STOCK, DeviceStatus.RESERVED, DeviceStatus.MAINTENANCE]
+        if device.status not in allowed_statuses:
             return None
         
         from datetime import datetime
